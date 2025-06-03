@@ -1,19 +1,32 @@
 # PORTAL-KESISWAANSMAN2BABA
-<!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
-  <title>Login Portal Sekolah</title>
+  <title>Login Sekolah</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: linear-gradient(to right, #2e86de, #54a0ff);
+      background-image: url(https://drive.google.com/file/d/1y762Gpqgs_Kut1mUCgALExAAFCarXFff/view?usp=drive_link);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100vh;
-      margin: 0;
+      position: relative;
+    }
+
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 0;
     }
 
     .login-box {
@@ -22,16 +35,26 @@
       border-radius: 10px;
       width: 100%;
       max-width: 400px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .logo {
+      
+      width: 100px;
+      margin: 0 auto 20px auto;
+      display: block;
     }
 
     .login-box h2 {
-      text-align: center;
       margin-bottom: 20px;
     }
 
     .form-group {
       margin-bottom: 15px;
+      text-align: left;
     }
 
     .form-group label {
@@ -40,7 +63,7 @@
       font-weight: bold;
     }
 
-    .form-group input, .form-group select {
+    .form-group input {
       width: 100%;
       padding: 10px;
       border-radius: 5px;
@@ -72,20 +95,12 @@
 </head>
 <body>
   <div class="login-box">
-    <h2>Login Portal Sekolah</h2>
+    <img src="logo.png" alt="Logo Sekolah" class="logo" />
+    <h2>Portal Login Sekolah</h2>
     <form onsubmit="login(event)">
       <div class="form-group">
-        <label for="role">Login Sebagai:</label>
-        <select id="role" required>
-          <option value="">-- Pilih Peran --</option>
-          <option value="siswa">Siswa</option>
-          <option value="guru">Guru</option>
-          <option value="admin">Admin</option>
-        </select>
-      </div>
-      <div class="form-group">
-        <label for="username">NIS / NIP / Username</label>
-        <input type="text" id="username" placeholder="Masukkan ID Pengguna" required />
+        <label for="username">NIS / NIP</label>
+        <input type="text" id="username" placeholder="Masukkan NIS/NIP" required />
       </div>
       <div class="form-group">
         <label for="password">Kata Sandi</label>
@@ -101,22 +116,14 @@
   <script>
     function login(event) {
       event.preventDefault();
-      const role = document.getElementById('role').value;
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
 
-      // Simulasi login berdasarkan peran
-      if (role === 'siswa' && username === 'siswa123' && password === 'siswa') {
-        alert('Login siswa berhasil!');
-        window.location.href = 'dashboard_siswa.html';
-      } else if (role === 'guru' && username === 'guru123' && password === 'guru') {
-        alert('Login guru berhasil!');
-        window.location.href = 'dashboard_guru.html';
-      } else if (role === 'admin' && username === 'admin123' && password === 'admin') {
-        alert('Login admin berhasil!');
-        window.location.href = 'dashboard_admin.html';
+      if (username === '199203212022032010' && password === 'fildzah2103') {
+        alert('Login berhasil!');
+        window.location.href = 'dashboard.html';
       } else {
-        alert('Login gagal. Periksa kembali data Anda.');
+        alert('NIS/NIP atau kata sandi salah.');
       }
     }
   </script>
