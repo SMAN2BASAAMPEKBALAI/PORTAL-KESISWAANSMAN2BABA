@@ -9,7 +9,6 @@
       margin: 0;
       font-family: Arial, sans-serif;
       background-color: white;
-      background-image: url('https://drive.google.com/uc?export=view&id=1y762Gpqgs_Kut1mUCgALExAAFCarXFff');
       background-size: cover;
       background-position: center;
       color: black;
