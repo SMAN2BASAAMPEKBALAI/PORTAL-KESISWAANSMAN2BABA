@@ -1,131 +1,172 @@
-# PORTAL-KESISWAANSMAN2BABA
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Login Sekolah</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard SMA Negeri 2 Basa Ampek Balai</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background-image: url(https://drive.google.com/file/d/1y762Gpqgs_Kut1mUCgALExAAFCarXFff/view?usp=drive_link);
+      background-color: white;
+      background-image: url('https://drive.google.com/uc?export=view&id=1y762Gpqgs_Kut1mUCgALExAAFCarXFff');
       background-size: cover;
       background-position: center;
-      background-repeat: no-repeat;
-      margin: 0;
-      height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      position: relative;
+      color: black;
     }
-
-    body::before {
-      content: '';
+    .overlay {
+      background-color: rgba(255, 255, 255, 0.7);
       position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      z-index: 0;
+      top: 0; left: 0; right: 0; bottom: 0;
     }
-
-    .login-box {
-      background-color: white;
-      padding: 30px;
-      border-radius: 10px;
-      width: 100%;
-      max-width: 400px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
-      text-align: center;
+    .container {
       position: relative;
-      z-index: 1;
+      z-index: 2;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
     }
-
     .logo {
-      
-      width: 100px;
-      margin: 0 auto 20px auto;
-      display: block;
-    }
-
-    .login-box h2 {
+      width: 120px;
       margin-bottom: 20px;
     }
-
-    .form-group {
-      margin-bottom: 15px;
-      text-align: left;
+    .dashboard {
+      background: rgba(255, 255, 255, 0.9);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px #ccc;
+      width: 100%;
+      max-width: 400px;
     }
-
-    .form-group label {
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    label, select, input {
       display: block;
-      margin-bottom: 5px;
-      font-weight: bold;
-    }
-
-    .form-group input {
       width: 100%;
+      margin-top: 10px;
       padding: 10px;
-      border-radius: 5px;
       border: 1px solid #ccc;
+      border-radius: 5px;
     }
-
-    .login-button {
-      width: 100%;
+    select, input {
+      background: #f9f9f9;
+      color: #000;
+    }
+    button {
+      margin-top: 20px;
       padding: 10px;
-      background-color: #2e86de;
+      background: #00cc66;
       color: white;
       border: none;
       border-radius: 5px;
-      font-size: 16px;
       cursor: pointer;
+      font-weight: bold;
     }
-
-    .login-button:hover {
-      background-color: #1e6fbd;
-    }
-
-    .footer {
-      text-align: center;
-      margin-top: 10px;
-      font-size: 12px;
-      color: #555;
+    button:hover {
+      background: #00994d;
     }
   </style>
 </head>
 <body>
-  <div class="login-box">
-    <img src="logo.png" alt="Logo Sekolah" class="logo" />
-    <h2>Portal Login Sekolah</h2>
-    <form onsubmit="login(event)">
-      <div class="form-group">
-        <label for="username">NIS / NIP</label>
-        <input type="text" id="username" placeholder="Masukkan NIS/NIP" required />
+  <div class="overlay"></div>
+  <div class="container">
+    <h1 class="dashboard-title">Dashboard SMA Negeri 2 Basa Ampek Balai</h1>
+    <div class="dashboard">
+      <h1>Login Dashboard</h1>
+      <form id="loginForm">
+        <label for="role">Masuk sebagai:</label>
+        <select id="role" required>
+          <option value="">Pilih peran</option>
+          <option value="siswa">Siswa</option>
+          <option value="guru">Guru</option>
+          <option value="admin">Admin</option>
+        </select>
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" required />
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" required />
+
+        <button type="submit">Masuk</button>
+      </form>
+        <p style="margin-top: 15px; text-align: center;">Belum punya akun? <a href="#" onclick="showRegister()">Buat akun</a></p>
       </div>
-      <div class="form-group">
-        <label for="password">Kata Sandi</label>
-        <input type="password" id="password" placeholder="Masukkan Kata Sandi" required />
-      </div>
-      <button type="submit" class="login-button">Masuk</button>
-    </form>
-    <div class="footer">
-      &copy; 2025 Portal Sekolah Digital
+
+  <div class="container" id="registerContainer" style="display: none;">
+    <div class="dashboard">
+      <h1>Buat Akun</h1>
+      <form id="registerForm">
+        <label for="regRole">Daftar sebagai:</label>
+        <select id="regRole" required>
+          <option value="">Pilih peran</option>
+          <option value="siswa">Siswa</option>
+          <option value="guru">Guru</option>
+        </select>
+
+        <label for="regUsername">Username:</label>
+        <input type="text" id="regUsername" required />
+
+        <label for="regPassword">Password:</label>
+        <input type="password" id="regPassword" required />
+
+        <label for="regConfirmPassword">Konfirmasi Password:</label>
+        <input type="password" id="regConfirmPassword" required />
+
+        <button type="submit">Daftar</button>
+        <p style="margin-top: 15px; text-align: center;"><a href="#" onclick="showLogin()">Sudah punya akun? Masuk di sini</a></p>
+      </form>
     </div>
   </div>
 
   <script>
-    function login(event) {
-      event.preventDefault();
-      const username = document.getElementById('username').value;
-      const password = document.getElementById('password').value;
+    document.getElementById("loginForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const role = document.getElementById("role").value;
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
 
-      if (username === '199203212022032010' && password === 'fildzah2103') {
-        alert('Login berhasil!');
-        window.location.href = 'dashboard.html';
+      if (role && username && password) {
+        alert(`Login berhasil sebagai ${role.toUpperCase()}`);
+        // Di sini bisa diarahkan ke dashboard sebenarnya
       } else {
-        alert('NIS/NIP atau kata sandi salah.');
+        alert("Harap isi semua kolom!");
       }
+    });
+      function showRegister() {
+      document.querySelector("#registerContainer").style.display = "flex";
+      document.querySelector(".container").style.display = "none";
     }
+
+    function showLogin() {
+      document.querySelector("#registerContainer").style.display = "none";
+      document.querySelector(".container").style.display = "flex";
+    }
+
+    document.getElementById("registerForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const role = document.getElementById("regRole").value;
+      const username = document.getElementById("regUsername").value;
+      const password = document.getElementById("regPassword").value;
+      const confirmPassword = document.getElementById("regConfirmPassword").value;
+
+      if (password !== confirmPassword) {
+        alert("Password tidak cocok!");
+        return;
+      }
+
+      if (role && username && password) {
+        alert(`Akun berhasil dibuat untuk ${role.toUpperCase()}`);
+        showLogin();
+      } else {
+        alert("Harap isi semua kolom!");
+      }
+    });
   </script>
 </body>
 </html>
